@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 using AbpMvc.Localization;
 using AbpMvc.Permissions;
@@ -84,6 +86,14 @@ namespace AbpMvc.Web.Menus
             //Administration->Settings
             administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 6);
 
+            context.Menu.AddItem(
+                new ApplicationMenuItem(
+                    AbpMvcMenus.Books,
+                    l["Menu:Books"],
+                    url: "/Books",
+                    icon: "fa fa-file-alt",
+                    requiredPermissionName: AbpMvcPermissions.Books.Default)
+            );
             return Task.CompletedTask;
         }
     }

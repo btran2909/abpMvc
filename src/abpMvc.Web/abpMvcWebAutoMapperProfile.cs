@@ -1,3 +1,4 @@
+using AbpMvc.Books;
 using AutoMapper;
 
 namespace AbpMvc.Web
@@ -7,6 +8,8 @@ namespace AbpMvc.Web
         public AbpMvcWebAutoMapperProfile()
         {
             //Define your object mappings here, for the Web project
+
+            CreateMap<BookDto, BookUpdateDto>();
         }
     }
 }

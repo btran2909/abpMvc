@@ -1,4 +1,4 @@
-﻿namespace AbpMvc.Web.Menus
+namespace AbpMvc.Web.Menus
 {
     public class AbpMvcMenus
     {
@@ -9,5 +9,7 @@
         public const string HostDashboard = Prefix + ".HostDashboard";
 
         public const string TenantDashboard = Prefix + ".TenantDashboard";
+
+        public const string Books = Prefix + ".Books";
     }
 }

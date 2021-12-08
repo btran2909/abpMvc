@@ -129,6 +129,7 @@ namespace AbpMvc.Web
             {
                 options.Conventions.AuthorizePage("/HostDashboard", AbpMvcPermissions.Dashboard.Host);
                 options.Conventions.AuthorizePage("/TenantDashboard", AbpMvcPermissions.Dashboard.Tenant);
+                options.Conventions.AuthorizePage("/Books/Index", AbpMvcPermissions.Books.Default);
             });
         }
 
@@ -146,8 +147,8 @@ namespace AbpMvc.Web
                 .AddJwtBearer(options =>
                 {
                     options.Authority = configuration["AuthServer:Authority"];
-                    options.RequireHttpsMetadata =  Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);;
-                    options.Audience  = "AbpMvc";
+                    options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]); ;
+                    options.Audience = "AbpMvc";
                 });
         }
 
@@ -213,7 +214,7 @@ namespace AbpMvc.Web
         private void ConfigureExternalProviders(ServiceConfigurationContext context)
         {
             context.Services.AddAuthentication()
-                .AddGoogle(GoogleDefaults.AuthenticationScheme, _ => {})
+                .AddGoogle(GoogleDefaults.AuthenticationScheme, _ => { })
                 .WithDynamicOptions<GoogleOptions, GoogleHandler>(
                     GoogleDefaults.AuthenticationScheme,
                     options =>
@@ -246,7 +247,6 @@ namespace AbpMvc.Web
                     }
                 );
         }
-
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {

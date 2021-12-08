@@ -16,6 +16,11 @@ namespace AbpMvc.Permissions
 
             //Define your own permissions here. Example:
             //myGroup.AddPermission(AbpMvcPermissions.MyPermission1, L("Permission:MyPermission1"));
+
+            var bookPermission = myGroup.AddPermission(AbpMvcPermissions.Books.Default, L("Permission:Books"));
+            bookPermission.AddChild(AbpMvcPermissions.Books.Create, L("Permission:Create"));
+            bookPermission.AddChild(AbpMvcPermissions.Books.Edit, L("Permission:Edit"));
+            bookPermission.AddChild(AbpMvcPermissions.Books.Delete, L("Permission:Delete"));
         }
 
         private static LocalizableString L(string name)

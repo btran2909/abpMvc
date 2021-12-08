@@ -1,0 +1,33 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpMvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using AbpMvc.Web.Pages.Books
+@using AbpMvc.Books;
+@using System.Globalization
+@inject IHtmlLocalizer<AbpMvcResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/Books/CreateModal" autocomplete="off">
+    <abp-modal>
+        <abp-modal-header title="@L["NewBook"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+            
+            <abp-input asp-for="Book.Name"/>
+
+            <abp-input asp-for="Book.Type"/>
+
+            <abp-input asp-for="Book.PublishDate" value="" type="date"/>
+
+            <abp-input asp-for="Book.Price"/>
+
+            
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>
