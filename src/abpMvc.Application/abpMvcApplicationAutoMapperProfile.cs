@@ -1,3 +1,4 @@
+using AbpMvc.Authors;
 using System;
 using AbpMvc.Shared;
 using Volo.Abp.AutoMapper;
@@ -17,6 +18,10 @@ namespace AbpMvc
             CreateMap<BookCreateDto, Book>().IgnoreFullAuditedObjectProperties().Ignore(x => x.ExtraProperties).Ignore(x => x.ConcurrencyStamp).Ignore(x => x.Id);
             CreateMap<BookUpdateDto, Book>().IgnoreFullAuditedObjectProperties().Ignore(x => x.ExtraProperties).Ignore(x => x.ConcurrencyStamp).Ignore(x => x.Id);
             CreateMap<Book, BookDto>();
+
+            CreateMap<AuthorCreateDto, Author>().IgnoreFullAuditedObjectProperties().Ignore(x => x.ExtraProperties).Ignore(x => x.ConcurrencyStamp).Ignore(x => x.Id);
+            CreateMap<AuthorUpdateDto, Author>().IgnoreFullAuditedObjectProperties().Ignore(x => x.ExtraProperties).Ignore(x => x.ConcurrencyStamp).Ignore(x => x.Id);
+            CreateMap<Author, AuthorDto>();
         }
     }
 }

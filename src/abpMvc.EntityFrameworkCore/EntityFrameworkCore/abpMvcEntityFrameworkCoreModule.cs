@@ -1,3 +1,4 @@
+using AbpMvc.Authors;
 using AbpMvc.Books;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -47,6 +48,8 @@ namespace AbpMvc.EntityFrameworkCore
                  * default repositories only for aggregate roots */
                 options.AddDefaultRepositories(includeAllEntities: true);
                 options.AddRepository<Book, Books.EfCoreBookRepository>();
+
+                options.AddRepository<Author, Authors.EfCoreAuthorRepository>();
 
             });
 

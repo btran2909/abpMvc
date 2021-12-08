@@ -1,0 +1,32 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpMvc.Localization
+@using AbpMvc.Web.Pages.Authors
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using AbpMvc.Authors;
+@using System.Globalization
+@inject IHtmlLocalizer<AbpMvcResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/Authors/EditModal" autocomplete="off">
+    <abp-modal>
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+            <abp-input asp-for="Id" />
+            
+            <abp-input asp-for="Author.Name"/>
+
+            <abp-input asp-for="Author.BirthDate" value="@(Model.Author.BirthDate.ToString("yyyy-MM-dd"))" type="date"/>
+
+            <abp-input asp-for="Author.ShortBio"/>
+
+            
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

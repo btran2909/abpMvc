@@ -130,6 +130,7 @@ namespace AbpMvc.Web
                 options.Conventions.AuthorizePage("/HostDashboard", AbpMvcPermissions.Dashboard.Host);
                 options.Conventions.AuthorizePage("/TenantDashboard", AbpMvcPermissions.Dashboard.Tenant);
                 options.Conventions.AuthorizePage("/Books/Index", AbpMvcPermissions.Books.Default);
+                options.Conventions.AuthorizePage("/Authors/Index", AbpMvcPermissions.Authors.Default);
             });
         }
 

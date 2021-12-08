@@ -11,5 +11,7 @@ namespace AbpMvc.Web.Menus
         public const string TenantDashboard = Prefix + ".TenantDashboard";
 
         public const string Books = Prefix + ".Books";
+
+        public const string Authors = Prefix + ".Authors";
     }
 }

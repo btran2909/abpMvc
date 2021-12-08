@@ -94,6 +94,15 @@ namespace AbpMvc.Web.Menus
                     icon: "fa fa-file-alt",
                     requiredPermissionName: AbpMvcPermissions.Books.Default)
             );
+
+            context.Menu.AddItem(
+                new ApplicationMenuItem(
+                    AbpMvcMenus.Authors,
+                    l["Menu:Authors"],
+                    url: "/Authors",
+                    icon: "fa fa-file-alt",
+                    requiredPermissionName: AbpMvcPermissions.Authors.Default)
+            );
             return Task.CompletedTask;
         }
     }

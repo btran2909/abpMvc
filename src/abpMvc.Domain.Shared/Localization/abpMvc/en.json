@@ -50,6 +50,14 @@
     "MaxPublishDate": "Max Publish Date",
     "MaxPrice": "Max Price",
     "Menu:Books": "Books",
-    "Menu:AbpMvc": "Abp Mvc"
+    "Menu:AbpMvc": "Abp Mvc",
+    "Permission:Authors": "Authors",
+    "Authors": "Authors",
+    "NewAuthor": "New Author",
+    "BirthDate": "Birth Date",
+    "ShortBio": "Short Bio",
+    "MinBirthDate": "Min Birth Date",
+    "MaxBirthDate": "Max Birth Date",
+    "Menu:Authors": "Authors"
   }
 }
