@@ -3,9 +3,9 @@ using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
 
-namespace abpMvc
+namespace AbpMvc
 {
-    public static class abpMvcModuleExtensionConfigurator
+    public static class AbpMvcModuleExtensionConfigurator
     {
         private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 

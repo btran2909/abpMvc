@@ -12,10 +12,10 @@ using Volo.Abp.TextTemplateManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Saas.Host;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcApplicationContractsModule),
+        typeof(AbpMvcApplicationContractsModule),
         typeof(AbpIdentityHttpApiClientModule),
         typeof(AbpPermissionManagementHttpApiClientModule),
         typeof(AbpFeatureManagementHttpApiClientModule),
@@ -29,14 +29,14 @@ namespace abpMvc
         typeof(LeptonThemeManagementHttpApiClientModule),
         typeof(TextTemplateManagementHttpApiClientModule)
     )]
-    public class abpMvcHttpApiClientModule : AbpModule
+    public class AbpMvcHttpApiClientModule : AbpModule
     {
         public const string RemoteServiceName = "Default";
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddHttpClientProxies(
-                typeof(abpMvcApplicationContractsModule).Assembly,
+                typeof(AbpMvcApplicationContractsModule).Assembly,
                 RemoteServiceName
             );
         }

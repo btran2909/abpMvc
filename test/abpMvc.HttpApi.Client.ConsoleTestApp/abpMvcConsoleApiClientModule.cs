@@ -5,13 +5,13 @@ using Volo.Abp.Http.Client;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 
-namespace abpMvc.HttpApi.Client.ConsoleTestApp
+namespace AbpMvc.HttpApi.Client.ConsoleTestApp
 {
     [DependsOn(
-        typeof(abpMvcHttpApiClientModule),
+        typeof(AbpMvcHttpApiClientModule),
         typeof(AbpHttpClientIdentityModelModule)
         )]
-    public class abpMvcConsoleApiClientModule : AbpModule
+    public class AbpMvcConsoleApiClientModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {

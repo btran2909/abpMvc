@@ -8,15 +8,15 @@ using Volo.Abp.IdentityServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
         typeof(AbpAutofacModule),
         typeof(AbpTestBaseModule),
         typeof(AbpAuthorizationModule),
-        typeof(abpMvcDomainModule)
+        typeof(AbpMvcDomainModule)
         )]
-    public class abpMvcTestBaseModule : AbpModule
+    public class AbpMvcTestBaseModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {

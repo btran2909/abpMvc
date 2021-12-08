@@ -1,8 +1,8 @@
-﻿namespace abpMvc.Web.Menus
+﻿namespace AbpMvc.Web.Menus
 {
-    public class abpMvcMenus
+    public class AbpMvcMenus
     {
-        private const string Prefix = "abpMvc";
+        private const string Prefix = "AbpMvc";
 
         public const string Home = Prefix + ".Home";
 

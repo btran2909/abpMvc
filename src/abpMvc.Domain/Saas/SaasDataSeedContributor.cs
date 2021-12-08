@@ -5,7 +5,7 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp.Uow;
 using Volo.Saas.Editions;
 
-namespace abpMvc.Saas
+namespace AbpMvc.Saas
 {
     public class SaasDataSeedContributor : IDataSeedContributor, ITransientDependency
     {

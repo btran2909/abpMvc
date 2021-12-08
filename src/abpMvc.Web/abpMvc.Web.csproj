@@ -5,7 +5,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <RootNamespace>abpMvc.Web</RootNamespace>
+    <RootNamespace>AbpMvc.Web</RootNamespace>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -43,24 +43,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\abpMvc.Application\abpMvc.Application.csproj" />
-    <ProjectReference Include="..\abpMvc.HttpApi\abpMvc.HttpApi.csproj" />
-    <ProjectReference Include="..\abpMvc.EntityFrameworkCore.DbMigrations\abpMvc.EntityFrameworkCore.DbMigrations.csproj" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.Account.Pro.Public.Web.IdentityServer" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.Account.Pro.Admin.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.AuditLogging.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.Identity.Pro.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.LeptonTheme.Management.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.IdentityServer.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.LanguageManagement.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Saas.Host.Web" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Lepton" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.TextTemplateManagement.Web" Version="4.3.0" />
+    <ProjectReference Include="..\AbpMvc.Application\AbpMvc.Application.csproj" />
+    <ProjectReference Include="..\AbpMvc.HttpApi\AbpMvc.HttpApi.csproj" />
+    <ProjectReference Include="..\AbpMvc.EntityFrameworkCore\AbpMvc.EntityFrameworkCore.csproj" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.Account.Pro.Public.Web.IdentityServer" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.Account.Pro.Admin.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.Identity.Pro.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.LeptonTheme.Management.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.LanguageManagement.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Saas.Host.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Lepton" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.TextTemplateManagement.Web" Version="4.4.4" />
   </ItemGroup>
 
 </Project>

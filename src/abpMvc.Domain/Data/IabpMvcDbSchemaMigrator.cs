@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace abpMvc.Data
+namespace AbpMvc.Data
 {
-    public interface IabpMvcDbSchemaMigrator
+    public interface IAbpMvcDbSchemaMigrator
     {
         Task MigrateAsync();
     }

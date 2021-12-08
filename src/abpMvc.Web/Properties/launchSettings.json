@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44340/",
-      "sslPort": 44340
+      "applicationUrl": "https://localhost:44334/",
+      "sslPort": 44334
     }
   },
   "profiles": {
@@ -15,13 +15,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "abpMvc.Web": {
+    "AbpMvc.Web": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:44340/"
+      "applicationUrl": "https://localhost:44334/"
     }
   }
 }

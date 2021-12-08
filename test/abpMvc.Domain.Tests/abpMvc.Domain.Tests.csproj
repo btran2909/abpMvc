@@ -4,11 +4,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>abpMvc</RootNamespace>
+    <RootNamespace>AbpMvc</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\abpMvc.EntityFrameworkCore.Tests\abpMvc.EntityFrameworkCore.Tests.csproj" />
+    <ProjectReference Include="..\AbpMvc.EntityFrameworkCore.Tests\AbpMvc.EntityFrameworkCore.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>

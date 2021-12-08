@@ -4,28 +4,28 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>abpMvc</RootNamespace>
+    <RootNamespace>AbpMvc</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\abpMvc.Domain.Shared\abpMvc.Domain.Shared.csproj" />
+    <ProjectReference Include="..\AbpMvc.Domain.Shared\AbpMvc.Domain.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Emailing" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.IdentityServer.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.BlobStoring.Database.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.Identity.Pro.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.LanguageManagement.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.LeptonTheme.Management.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Saas.Domain" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.TextTemplateManagement.Domain" Version="4.3.0" />
+    <PackageReference Include="Volo.Abp.Emailing" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.BlobStoring.Database.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.Identity.Pro.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.LanguageManagement.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.LeptonTheme.Management.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Saas.Domain" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.TextTemplateManagement.Domain" Version="4.4.4" />
   </ItemGroup>
 
 </Project>

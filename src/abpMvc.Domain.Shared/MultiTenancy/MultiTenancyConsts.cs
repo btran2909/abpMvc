@@ -1,4 +1,4 @@
-﻿namespace abpMvc.MultiTenancy
+﻿namespace AbpMvc.MultiTenancy
 {
     public static class MultiTenancyConsts
     {

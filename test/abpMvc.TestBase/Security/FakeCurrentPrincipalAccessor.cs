@@ -4,7 +4,7 @@ using System.Security.Claims;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Security.Claims;
 
-namespace abpMvc.Security
+namespace AbpMvc.Security
 {
     [Dependency(ReplaceServices = true)]
     public class FakeCurrentPrincipalAccessor : ICurrentPrincipalAccessor, ISingletonDependency

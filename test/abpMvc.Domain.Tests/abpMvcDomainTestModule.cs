@@ -1,12 +1,12 @@
-﻿using abpMvc.EntityFrameworkCore;
+﻿using AbpMvc.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcEntityFrameworkCoreTestModule)
+        typeof(AbpMvcEntityFrameworkCoreTestModule)
         )]
-    public class abpMvcDomainTestModule : AbpModule
+    public class AbpMvcDomainTestModule : AbpModule
     {
 
     }

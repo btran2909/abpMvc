@@ -4,12 +4,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>abpMvc</RootNamespace>
+    <RootNamespace>AbpMvc</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\abpMvc.Application\abpMvc.Application.csproj" />
-    <ProjectReference Include="..\abpMvc.Domain.Tests\abpMvc.Domain.Tests.csproj" />
+    <ProjectReference Include="..\..\src\AbpMvc.Application\AbpMvc.Application.csproj" />
+    <ProjectReference Include="..\AbpMvc.Domain.Tests\AbpMvc.Domain.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>

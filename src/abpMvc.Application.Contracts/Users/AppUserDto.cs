@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Identity;
 
-namespace abpMvc.Users
+namespace AbpMvc.Users
 {
     public class AppUserDto : IdentityUserDto
     {

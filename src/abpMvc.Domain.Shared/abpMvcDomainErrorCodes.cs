@@ -1,6 +1,6 @@
-﻿namespace abpMvc
+﻿namespace AbpMvc
 {
-    public static class abpMvcDomainErrorCodes
+    public static class AbpMvcDomainErrorCodes
     {
         /* You can add your business exception error codes here, as constants */
     }

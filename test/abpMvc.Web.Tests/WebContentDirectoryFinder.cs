@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace abpMvc
+namespace AbpMvc
 {
     /// <summary>
     /// This class is used to find root path of the web project. Used for;
@@ -13,24 +13,35 @@ namespace abpMvc
     {
         public static string CalculateContentRootFolder()
         {
-            var domainAssemblyDirectoryPath = Path.GetDirectoryName(typeof(abpMvcDomainModule).Assembly.Location);
+            var domainAssemblyDirectoryPath =
+                Path.GetDirectoryName(typeof(AbpMvcDomainModule).Assembly.Location);
             if (domainAssemblyDirectoryPath == null)
             {
-                throw new Exception($"Could not find location of {typeof(abpMvcDomainModule).Assembly.FullName} assembly!");
+                throw new Exception(
+                    $"Could not find location of {typeof(AbpMvcDomainModule).Assembly.FullName} assembly!");
             }
 
             var directoryInfo = new DirectoryInfo(domainAssemblyDirectoryPath);
-            while (!DirectoryContains(directoryInfo.FullName, "abpMvc.sln"))
+
+            if (Environment.GetEnvironmentVariable("NCrunch") == "1")
             {
-                if (directoryInfo.Parent == null)
+                while (!DirectoryContains(directoryInfo.FullName, "AbpMvc.Web.csproj", SearchOption.AllDirectories))
                 {
-                    throw new Exception("Could not find content root folder!");
+                    directoryInfo = directoryInfo.Parent ?? throw new Exception("Could not find content root folder!");
                 }
 
-                directoryInfo = directoryInfo.Parent;
+                var webProject = Directory.GetFiles(directoryInfo.FullName, string.Empty, SearchOption.AllDirectories)
+                    .First(filePath => string.Equals(Path.GetFileName(filePath), "AbpMvc.Web.csproj"));
+
+                return Path.GetDirectoryName(webProject);
             }
 
-            var webFolder = Path.Combine(directoryInfo.FullName, $"src{Path.DirectorySeparatorChar}abpMvc.Web");
+            while (!DirectoryContains(directoryInfo.FullName, "AbpMvc.sln"))
+            {
+                directoryInfo = directoryInfo.Parent ?? throw new Exception("Could not find content root folder!");
+            }
+
+            var webFolder = Path.Combine(directoryInfo.FullName, $"src{Path.DirectorySeparatorChar}AbpMvc.Web");
             if (Directory.Exists(webFolder))
             {
                 return webFolder;
@@ -39,9 +50,11 @@ namespace abpMvc
             throw new Exception("Could not find root folder of the web project!");
         }
 
-        private static bool DirectoryContains(string directory, string fileName)
+        private static bool DirectoryContains(string directory, string fileName,
+            SearchOption searchOption = SearchOption.TopDirectoryOnly)
         {
-            return Directory.GetFiles(directory).Any(filePath => string.Equals(Path.GetFileName(filePath), fileName));
+            return Directory.GetFiles(directory, string.Empty, searchOption)
+                .Any(filePath => string.Equals(Path.GetFileName(filePath), fileName));
         }
     }
 }

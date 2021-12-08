@@ -1,6 +1,6 @@
-﻿namespace abpMvc
+﻿namespace AbpMvc
 {
-    public abstract class abpMvcApplicationTestBase : abpMvcTestBase<abpMvcApplicationTestModule> 
+    public abstract class AbpMvcApplicationTestBase : AbpMvcTestBase<AbpMvcApplicationTestModule> 
     {
 
     }

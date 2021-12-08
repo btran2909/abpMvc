@@ -1,15 +1,15 @@
-﻿using abpMvc.Localization;
+﻿using AbpMvc.Localization;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace abpMvc.Controllers
+namespace AbpMvc.Controllers
 {
     /* Inherit your controllers from this class.
      */
-    public abstract class abpMvcController : AbpController
+    public abstract class AbpMvcController : AbpController
     {
-        protected abpMvcController()
+        protected AbpMvcController()
         {
-            LocalizationResource = typeof(abpMvcResource);
+            LocalizationResource = typeof(AbpMvcResource);
         }
     }
 }

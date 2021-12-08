@@ -1,8 +1,8 @@
-namespace abpMvc.Permissions
+namespace AbpMvc.Permissions
 {
-    public static class abpMvcPermissions
+    public static class AbpMvcPermissions
     {
-        public const string GroupName = "abpMvc";
+        public const string GroupName = "AbpMvc";
 
         public static class Dashboard
         {

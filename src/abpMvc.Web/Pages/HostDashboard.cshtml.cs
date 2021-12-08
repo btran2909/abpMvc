@@ -2,7 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace abpMvc.Web.Pages
+namespace AbpMvc.Web.Pages
 {
     public class HostDashboardModel : PageModel
     {

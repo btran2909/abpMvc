@@ -251,14 +251,14 @@ paket-files/
 .idea/
 *.sln.iml
 
-# abpMvc
-src/abpMvc.Web/Logs/*
-src/abpMvc.Web.Host/Logs/*
-src/abpMvc.Web.Public/Logs/*
-src/abpMvc.Web.Public.Host/Logs/*
-src/abpMvc.IdentityServer/Logs/*
-src/abpMvc.HttpApi.Host/Logs/*
-src/abpMvc.HttpApi.HostWithIds/Logs/*
-src/abpMvc.DbMigrator/Logs/*
-src/abpMvc.Blazor.Server/Logs/*
-src/abpMvc.Blazor.Server.Tiered/Logs/*
+# AbpMvc
+src/AbpMvc.Web/Logs/*
+src/AbpMvc.Web.Host/Logs/*
+src/AbpMvc.Web.Public/Logs/*
+src/AbpMvc.Web.Public.Host/Logs/*
+src/AbpMvc.IdentityServer/Logs/*
+src/AbpMvc.HttpApi.Host/Logs/*
+src/AbpMvc.HttpApi.HostWithIds/Logs/*
+src/AbpMvc.DbMigrator/Logs/*
+src/AbpMvc.Blazor.Server/Logs/*
+src/AbpMvc.Blazor.Server.Tiered/Logs/*

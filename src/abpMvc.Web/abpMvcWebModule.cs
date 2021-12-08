@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using abpMvc.EntityFrameworkCore;
-using abpMvc.Localization;
-using abpMvc.MultiTenancy;
-using abpMvc.Permissions;
-using abpMvc.Web.Menus;
+using AbpMvc.EntityFrameworkCore;
+using AbpMvc.Localization;
+using AbpMvc.MultiTenancy;
+using AbpMvc.Permissions;
+using AbpMvc.Web.Menus;
 using Microsoft.OpenApi.Models;
 using Volo.Abp;
 using Volo.Abp.Account.Admin.Web;
@@ -42,19 +42,19 @@ using Volo.Saas.Host;
 using System;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.Twitter;
-using abpMvc.Web.HealthChecks;
+using AbpMvc.Web.HealthChecks;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Lepton.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Swashbuckle;
 
-namespace abpMvc.Web
+namespace AbpMvc.Web
 {
     [DependsOn(
-        typeof(abpMvcHttpApiModule),
-        typeof(abpMvcApplicationModule),
-        typeof(abpMvcEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpMvcHttpApiModule),
+        typeof(AbpMvcApplicationModule),
+        typeof(AbpMvcEntityFrameworkCoreModule),
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountPublicWebIdentityServerModule),
@@ -69,19 +69,19 @@ namespace abpMvc.Web
         typeof(AbpSwashbuckleModule),
         typeof(AbpAspNetCoreSerilogModule)
         )]
-    public class abpMvcWebModule : AbpModule
+    public class AbpMvcWebModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
             {
                 options.AddAssemblyResource(
-                    typeof(abpMvcResource),
-                    typeof(abpMvcDomainModule).Assembly,
-                    typeof(abpMvcDomainSharedModule).Assembly,
-                    typeof(abpMvcApplicationModule).Assembly,
-                    typeof(abpMvcApplicationContractsModule).Assembly,
-                    typeof(abpMvcWebModule).Assembly
+                    typeof(AbpMvcResource),
+                    typeof(AbpMvcDomainModule).Assembly,
+                    typeof(AbpMvcDomainSharedModule).Assembly,
+                    typeof(AbpMvcApplicationModule).Assembly,
+                    typeof(AbpMvcApplicationContractsModule).Assembly,
+                    typeof(AbpMvcWebModule).Assembly
                 );
             });
         }
@@ -106,7 +106,7 @@ namespace abpMvc.Web
 
         private void ConfigureHealthChecks(ServiceConfigurationContext context)
         {
-            context.Services.AddabpMvcHealthChecks();
+            context.Services.AddAbpMvcHealthChecks();
         }
 
         private void ConfigureBundles()
@@ -127,8 +127,8 @@ namespace abpMvc.Web
         {
             Configure<RazorPagesOptions>(options =>
             {
-                options.Conventions.AuthorizePage("/HostDashboard", abpMvcPermissions.Dashboard.Host);
-                options.Conventions.AuthorizePage("/TenantDashboard", abpMvcPermissions.Dashboard.Tenant);
+                options.Conventions.AuthorizePage("/HostDashboard", AbpMvcPermissions.Dashboard.Host);
+                options.Conventions.AuthorizePage("/TenantDashboard", AbpMvcPermissions.Dashboard.Tenant);
             });
         }
 
@@ -147,7 +147,7 @@ namespace abpMvc.Web
                 {
                     options.Authority = configuration["AuthServer:Authority"];
                     options.RequireHttpsMetadata =  Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);;
-                    options.Audience  = "abpMvc";
+                    options.Audience  = "AbpMvc";
                 });
         }
 
@@ -155,7 +155,7 @@ namespace abpMvc.Web
         {
             Configure<AbpAutoMapperOptions>(options =>
             {
-                options.AddMaps<abpMvcWebModule>();
+                options.AddMaps<AbpMvcWebModule>();
             });
         }
 
@@ -163,16 +163,16 @@ namespace abpMvc.Web
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<abpMvcWebModule>();
+                options.FileSets.AddEmbedded<AbpMvcWebModule>();
 
                 if (hostingEnvironment.IsDevelopment())
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<abpMvcDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}abpMvc.Domain.Shared", Path.DirectorySeparatorChar)));
-                    options.FileSets.ReplaceEmbeddedByPhysical<abpMvcDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}abpMvc.Domain", Path.DirectorySeparatorChar)));
-                    options.FileSets.ReplaceEmbeddedByPhysical<abpMvcApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}abpMvc.Application.Contracts", Path.DirectorySeparatorChar)));
-                    options.FileSets.ReplaceEmbeddedByPhysical<abpMvcApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}abpMvc.Application", Path.DirectorySeparatorChar)));
-                    options.FileSets.ReplaceEmbeddedByPhysical<abpMvcHttpApiModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}abpMvc.HttpApi", Path.DirectorySeparatorChar)));
-                    options.FileSets.ReplaceEmbeddedByPhysical<abpMvcWebModule>(hostingEnvironment.ContentRootPath);
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpMvcDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}AbpMvc.Domain.Shared", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpMvcDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}AbpMvc.Domain", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpMvcApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}AbpMvc.Application.Contracts", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpMvcApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}AbpMvc.Application", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpMvcHttpApiModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}AbpMvc.HttpApi", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpMvcWebModule>(hostingEnvironment.ContentRootPath);
                 }
             });
         }
@@ -181,12 +181,12 @@ namespace abpMvc.Web
         {
             Configure<AbpNavigationOptions>(options =>
             {
-                options.MenuContributors.Add(new abpMvcMenuContributor());
+                options.MenuContributors.Add(new AbpMvcMenuContributor());
             });
 
             Configure<AbpToolbarOptions>(options =>
             {
-                options.Contributors.Add(new abpMvcToolbarContributor());
+                options.Contributors.Add(new AbpMvcToolbarContributor());
             });
         }
 
@@ -194,16 +194,16 @@ namespace abpMvc.Web
         {
             Configure<AbpAspNetCoreMvcOptions>(options =>
             {
-                options.ConventionalControllers.Create(typeof(abpMvcApplicationModule).Assembly);
+                options.ConventionalControllers.Create(typeof(AbpMvcApplicationModule).Assembly);
             });
         }
 
         private void ConfigureSwaggerServices(IServiceCollection services)
         {
-            services.AddSwaggerGen(
+            services.AddAbpSwaggerGen(
                 options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "abpMvc API", Version = "v1" });
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "AbpMvc API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
                     options.CustomSchemaIds(type => type.FullName);
                 }
@@ -284,7 +284,7 @@ namespace abpMvc.Web
             app.UseSwagger();
             app.UseAbpSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "abpMvc API");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "AbpMvc API");
             });
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();

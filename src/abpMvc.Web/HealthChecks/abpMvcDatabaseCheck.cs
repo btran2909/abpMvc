@@ -5,13 +5,13 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Identity;
 
-namespace abpMvc.Web.HealthChecks
+namespace AbpMvc.Web.HealthChecks
 {
-    public class abpMvcDatabaseCheck : IHealthCheck, ITransientDependency
+    public class AbpMvcDatabaseCheck : IHealthCheck, ITransientDependency
     {
         protected readonly IIdentityRoleRepository IdentityRoleRepository;
 
-        public abpMvcDatabaseCheck(IIdentityRoleRepository identityRoleRepository)
+        public AbpMvcDatabaseCheck(IIdentityRoleRepository identityRoleRepository)
         {
             IdentityRoleRepository = identityRoleRepository;
         }

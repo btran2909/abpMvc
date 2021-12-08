@@ -1,9 +1,9 @@
 ﻿using Volo.Abp.Localization;
 
-namespace abpMvc.Localization
+namespace AbpMvc.Localization
 {
-    [LocalizationResourceName("abpMvc")]
-    public class abpMvcResource
+    [LocalizationResourceName("AbpMvc")]
+    public class AbpMvcResource
     {
 
     }

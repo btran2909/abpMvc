@@ -1,4 +1,4 @@
-using abpMvc.Localization;
+using AbpMvc.Localization;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -16,9 +16,10 @@ using Volo.Abp.TextTemplateManagement;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Saas;
 using Volo.Abp.BlobStoring.Database;
+using Volo.Abp.Commercial.SuiteTemplates;
 using Volo.Abp.GlobalFeatures;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
         typeof(AbpAuditLoggingDomainSharedModule),
@@ -31,38 +32,39 @@ namespace abpMvc
         typeof(LanguageManagementDomainSharedModule),
         typeof(SaasDomainSharedModule),
         typeof(TextTemplateManagementDomainSharedModule),
+        typeof(VoloAbpCommercialSuiteTemplatesModule),
         typeof(LeptonThemeManagementDomainSharedModule),
         typeof(AbpGlobalFeaturesModule),
         typeof(BlobStoringDatabaseDomainSharedModule)
         )]
-    public class abpMvcDomainSharedModule : AbpModule
+    public class AbpMvcDomainSharedModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
-            abpMvcGlobalFeatureConfigurator.Configure();
-            abpMvcModuleExtensionConfigurator.Configure();
+            AbpMvcGlobalFeatureConfigurator.Configure();
+            AbpMvcModuleExtensionConfigurator.Configure();
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<abpMvcDomainSharedModule>();
+                options.FileSets.AddEmbedded<AbpMvcDomainSharedModule>();
             });
 
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<abpMvcResource>("en")
+                    .Add<AbpMvcResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("/Localization/abpMvc");
+                    .AddVirtualJson("/Localization/AbpMvc");
 
-                options.DefaultResourceType = typeof(abpMvcResource);
+                options.DefaultResourceType = typeof(AbpMvcResource);
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
             {
-                options.MapCodeNamespace("abpMvc", typeof(abpMvcResource));
+                options.MapCodeNamespace("AbpMvc", typeof(AbpMvcResource));
             });
         }
     }

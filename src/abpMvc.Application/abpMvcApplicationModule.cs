@@ -15,11 +15,11 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TextTemplateManagement;
 using Volo.Saas.Host;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcDomainModule),
-        typeof(abpMvcApplicationContractsModule),
+        typeof(AbpMvcDomainModule),
+        typeof(AbpMvcApplicationContractsModule),
         typeof(AbpIdentityApplicationModule),
         typeof(AbpPermissionManagementApplicationModule),
         typeof(AbpFeatureManagementApplicationModule),
@@ -33,13 +33,13 @@ namespace abpMvc
         typeof(LeptonThemeManagementApplicationModule),
         typeof(TextTemplateManagementApplicationModule)
         )]
-    public class abpMvcApplicationModule : AbpModule
+    public class AbpMvcApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpAutoMapperOptions>(options =>
             {
-                options.AddMaps<abpMvcApplicationModule>();
+                options.AddMaps<AbpMvcApplicationModule>();
             });
         }
     }

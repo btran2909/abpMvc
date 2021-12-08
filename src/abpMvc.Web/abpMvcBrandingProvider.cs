@@ -1,11 +1,11 @@
 ﻿using Volo.Abp.Ui.Branding;
 using Volo.Abp.DependencyInjection;
 
-namespace abpMvc.Web
+namespace AbpMvc.Web
 {
     [Dependency(ReplaceServices = true)]
-    public class abpMvcBrandingProvider : DefaultBrandingProvider
+    public class AbpMvcBrandingProvider : DefaultBrandingProvider
     {
-        public override string AppName => "abpMvc";
+        public override string AppName => "AbpMvc";
     }
 }

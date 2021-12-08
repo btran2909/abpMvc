@@ -1,13 +1,13 @@
 ﻿using Volo.Abp.Settings;
 
-namespace abpMvc.Settings
+namespace AbpMvc.Settings
 {
-    public class abpMvcSettingDefinitionProvider : SettingDefinitionProvider
+    public class AbpMvcSettingDefinitionProvider : SettingDefinitionProvider
     {
         public override void Define(ISettingDefinitionContext context)
         {
             //Define your own settings here. Example:
-            //context.Add(new SettingDefinition(abpMvcSettings.MySetting1));
+            //context.Add(new SettingDefinition(AbpMvcSettings.MySetting1));
         }
     }
 }

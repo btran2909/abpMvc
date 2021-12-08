@@ -1,21 +1,30 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 using Volo.Abp.Uow;
 using Volo.Abp.Testing;
 
-namespace abpMvc
+namespace AbpMvc
 {
-    public abstract class abpMvcTestBase<TStartupModule> : AbpIntegratedTest<TStartupModule> 
+    public abstract class AbpMvcTestBase<TStartupModule> : AbpIntegratedTest<TStartupModule>
         where TStartupModule : IAbpModule
     {
         protected override void SetAbpApplicationCreationOptions(AbpApplicationCreationOptions options)
         {
             options.UseAutofac();
         }
-        
+
+        protected override void BeforeAddApplication(IServiceCollection services)
+        {
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", false);
+            builder.AddJsonFile("appsettings.secrets.json", true);
+            services.ReplaceConfiguration(builder.Build());
+        }
+
         protected virtual Task WithUnitOfWorkAsync(Func<Task> func)
         {
             return WithUnitOfWorkAsync(new AbpUnitOfWorkOptions(), func);
@@ -35,7 +44,7 @@ namespace abpMvc
                 }
             }
         }
-        
+
         protected virtual Task<TResult> WithUnitOfWorkAsync<TResult>(Func<Task<TResult>> func)
         {
             return WithUnitOfWorkAsync(new AbpUnitOfWorkOptions(), func);

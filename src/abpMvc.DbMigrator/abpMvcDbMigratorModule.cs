@@ -1,16 +1,16 @@
-﻿using abpMvc.EntityFrameworkCore;
+﻿using AbpMvc.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Modularity;
 
-namespace abpMvc.DbMigrator
+namespace AbpMvc.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(abpMvcEntityFrameworkCoreDbMigrationsModule),
-        typeof(abpMvcApplicationContractsModule)
+        typeof(AbpMvcEntityFrameworkCoreModule),
+        typeof(AbpMvcApplicationContractsModule)
     )]
-    public class abpMvcDbMigratorModule : AbpModule
+    public class AbpMvcDbMigratorModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

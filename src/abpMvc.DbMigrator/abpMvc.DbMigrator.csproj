@@ -15,14 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.3.0" />
-    <ProjectReference Include="..\abpMvc.EntityFrameworkCore.DbMigrations\abpMvc.EntityFrameworkCore.DbMigrations.csproj" />
-    <ProjectReference Include="..\abpMvc.Application.Contracts\abpMvc.Application.Contracts.csproj" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.4" />
+    <ProjectReference Include="..\AbpMvc.EntityFrameworkCore\AbpMvc.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\AbpMvc.Application.Contracts\AbpMvc.Application.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Logs\**" />
     <Content Remove="Logs\**" />
+
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="Logs\**" />
   </ItemGroup>
@@ -30,6 +31,11 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="appsettings.secrets.json" />
+    <Content Include="appsettings.secrets.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

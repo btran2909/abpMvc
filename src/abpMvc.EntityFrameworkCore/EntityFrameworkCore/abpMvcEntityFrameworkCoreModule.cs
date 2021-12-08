@@ -14,10 +14,10 @@ using Volo.Abp.TextTemplateManagement.EntityFrameworkCore;
 using Volo.Saas.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 
-namespace abpMvc.EntityFrameworkCore
+namespace AbpMvc.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(abpMvcDomainModule),
+        typeof(AbpMvcDomainModule),
         typeof(AbpIdentityProEntityFrameworkCoreModule),
         typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
@@ -31,16 +31,16 @@ namespace abpMvc.EntityFrameworkCore
         typeof(TextTemplateManagementEntityFrameworkCoreModule),
         typeof(BlobStoringDatabaseEntityFrameworkCoreModule)
         )]
-    public class abpMvcEntityFrameworkCoreModule : AbpModule
+    public class AbpMvcEntityFrameworkCoreModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
-            abpMvcEfCoreEntityExtensionMappings.Configure();
+            AbpMvcEfCoreEntityExtensionMappings.Configure();
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddAbpDbContext<abpMvcDbContext>(options =>
+            context.Services.AddAbpDbContext<AbpMvcDbContext>(options =>
             {
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
@@ -50,7 +50,7 @@ namespace abpMvc.EntityFrameworkCore
             Configure<AbpDbContextOptions>(options =>
             {
                 /* The main point to change your DBMS.
-                 * See also abpMvcMigrationsDbContextFactory for EF Core tooling. */
+                 * See also AbpMvcDbContextFactory for EF Core tooling. */
                 options.UseSqlServer();
             });
         }

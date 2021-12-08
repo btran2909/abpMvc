@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
-[assembly:InternalsVisibleToAttribute("abpMvc.Domain.Tests")]
-[assembly:InternalsVisibleToAttribute("abpMvc.TestBase")]
+[assembly:InternalsVisibleToAttribute("AbpMvc.Domain.Tests")]
+[assembly:InternalsVisibleToAttribute("AbpMvc.TestBase")]

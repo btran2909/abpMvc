@@ -1,12 +1,13 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 
-namespace abpMvc.DbMigrator
+namespace AbpMvc.DbMigrator
 {
     class Program
     {
@@ -17,9 +18,9 @@ namespace abpMvc.DbMigrator
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .MinimumLevel.Override("Volo.Abp", LogEventLevel.Warning)
 #if DEBUG
-                .MinimumLevel.Override("abpMvc", LogEventLevel.Debug)
+                .MinimumLevel.Override("AbpMvc", LogEventLevel.Debug)
 #else
-                .MinimumLevel.Override("abpMvc", LogEventLevel.Information)
+                .MinimumLevel.Override("AbpMvc", LogEventLevel.Information)
 #endif
                 .Enrich.FromLogContext()
                 .WriteTo.Async(c => c.File("Logs/logs.txt"))
@@ -31,6 +32,10 @@ namespace abpMvc.DbMigrator
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(build =>
+                {
+                    build.AddJsonFile("appsettings.secrets.json", optional: true);
+                })
                 .ConfigureLogging((context, logging) => logging.ClearProviders())
                 .ConfigureServices((hostContext, services) =>
                 {

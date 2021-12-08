@@ -1,15 +1,15 @@
-﻿using abpMvc.Localization;
+﻿using AbpMvc.Localization;
 using Volo.Abp.Application.Services;
 
-namespace abpMvc
+namespace AbpMvc
 {
     /* Inherit your application services from this class.
      */
-    public abstract class abpMvcAppService : ApplicationService
+    public abstract class AbpMvcAppService : ApplicationService
     {
-        protected abpMvcAppService()
+        protected AbpMvcAppService()
         {
-            LocalizationResource = typeof(abpMvcResource);
+            LocalizationResource = typeof(AbpMvcResource);
         }
     }
 }

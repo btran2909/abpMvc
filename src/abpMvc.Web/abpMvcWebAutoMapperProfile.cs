@@ -1,10 +1,10 @@
 using AutoMapper;
 
-namespace abpMvc.Web
+namespace AbpMvc.Web
 {
-    public class abpMvcWebAutoMapperProfile : Profile
+    public class AbpMvcWebAutoMapperProfile : Profile
     {
-        public abpMvcWebAutoMapperProfile()
+        public AbpMvcWebAutoMapperProfile()
         {
             //Define your object mappings here, for the Web project
         }

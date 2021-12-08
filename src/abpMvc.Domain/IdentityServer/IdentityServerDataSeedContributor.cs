@@ -18,7 +18,7 @@ using ApiResource = Volo.Abp.IdentityServer.ApiResources.ApiResource;
 using ApiScope = Volo.Abp.IdentityServer.ApiScopes.ApiScope;
 using Client = Volo.Abp.IdentityServer.Clients.Client;
 
-namespace abpMvc.IdentityServer
+namespace AbpMvc.IdentityServer
 {
     public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
     {
@@ -65,7 +65,7 @@ namespace abpMvc.IdentityServer
 
         private async Task CreateApiScopesAsync()
         {
-            await CreateApiScopeAsync("abpMvc");
+            await CreateApiScopeAsync("AbpMvc");
         }
 
         private async Task CreateApiResourcesAsync()
@@ -80,7 +80,7 @@ namespace abpMvc.IdentityServer
                 "role"
             };
 
-            await CreateApiResourceAsync("abpMvc", commonApiUserClaims);
+            await CreateApiResourceAsync("AbpMvc", commonApiUserClaims);
         }
 
         private async Task<ApiResource> CreateApiResourceAsync(string name, IEnumerable<string> claims)
@@ -137,82 +137,25 @@ namespace abpMvc.IdentityServer
                 "role",
                 "phone",
                 "address",
-                "abpMvc"
+                "AbpMvc"
             };
 
             var configurationSection = _configuration.GetSection("IdentityServer:Clients");
 
             
-            //Web Client
-            var webClientId = configurationSection["abpMvc_Web:ClientId"];
-            if (!webClientId.IsNullOrWhiteSpace())
-            {
-                var webClientRootUrl = configurationSection["abpMvc_Web:RootUrl"].EnsureEndsWith('/');
-
-                await CreateClientAsync(
-                    name: webClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { "hybrid" },
-                    secret: (configurationSection["abpMvc_Web:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout",
-                    corsOrigins: new[] { webClientRootUrl.RemovePostFix("/") }
-                );
-            }
-            
-            
-
-            //Web Public Client
-            var webPublicClientId = configurationSection["abpMvc_Web_Public:ClientId"];
-            if (!webPublicClientId.IsNullOrWhiteSpace())
-            {
-                var webPublicClientRootUrl = configurationSection["abpMvc_Web_Public:RootUrl"].EnsureEndsWith('/');
-                await CreateClientAsync(
-                    name: webPublicClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] {"hybrid"},
-                    secret: (configurationSection["abpMvc_Web:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webPublicClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webPublicClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webPublicClientRootUrl}Account/FrontChannelLogout"
-                );
-            }
-            
-            
-
-            //Web Public Tiered Client
-            var webPublicTieredClientId = configurationSection["abpMvc_Web_Public_Tiered:ClientId"];
-            if (!webPublicTieredClientId.IsNullOrWhiteSpace())
-            {
-                var webPublicTieredClientRootUrl = configurationSection["abpMvc_Web_Public_Tiered:RootUrl"].EnsureEndsWith('/');
-
-                /* abpMvc_Web client is only needed if you created a tiered
-                 * solution. Otherwise, you can delete this client. */
-
-                await CreateClientAsync(
-                    name: webPublicTieredClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] {"hybrid"},
-                    secret: (configurationSection["abpMvc_Web_Public_Tiered:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webPublicTieredClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webPublicTieredClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webPublicTieredClientRootUrl}Account/FrontChannelLogout"
-                );
-            }
             
             
             //Console Test / Angular Client
-            var consoleAndAngularClientId = configurationSection["abpMvc_App:ClientId"];
+            var consoleAndAngularClientId = configurationSection["AbpMvc_App:ClientId"];
             if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
             {
-                var webClientRootUrl = configurationSection["abpMvc_App:RootUrl"]?.TrimEnd('/');
+                var webClientRootUrl = configurationSection["AbpMvc_App:RootUrl"]?.TrimEnd('/');
 
                 await CreateClientAsync(
                     name: consoleAndAngularClientId,
                     scopes: commonScopes,
                     grantTypes: new[] { "password", "client_credentials", "authorization_code", "LinkLogin" },
-                    secret: (configurationSection["abpMvc_App:ClientSecret"] ?? "1q2w3e*").Sha256(),
+                    secret: (configurationSection["AbpMvc_App:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     requireClientSecret: false,
                     redirectUri: webClientRootUrl,
                     postLogoutRedirectUri: webClientRootUrl,
@@ -220,60 +163,19 @@ namespace abpMvc.IdentityServer
                 );
             }
             
-
-            // Blazor Client
-            var blazorClientId = configurationSection["abpMvc_Blazor:ClientId"];
-            if (!blazorClientId.IsNullOrWhiteSpace())
-            {
-                var blazorRootUrl = configurationSection["abpMvc_Blazor:RootUrl"].TrimEnd('/');
-
-                await CreateClientAsync(
-                    name: blazorClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { "authorization_code" },
-                    secret: configurationSection["abpMvc_Blazor:ClientSecret"]?.Sha256(),
-                    requireClientSecret: false,
-                    redirectUri: $"{blazorRootUrl}/authentication/login-callback",
-                    postLogoutRedirectUri: $"{blazorRootUrl}/authentication/logout-callback",
-                    corsOrigins: new[] { blazorRootUrl.RemovePostFix("/") }
-                );
-            }
-            
-            
-
-            //Blazor Server Tiered Client
-            var blazorServerTieredClientId = configurationSection["abpMvc_BlazorServerTiered:ClientId"];
-            if (!blazorServerTieredClientId.IsNullOrWhiteSpace())
-            {
-                var blazorServerTieredClientRootUrl = configurationSection["abpMvc_BlazorServerTiered:RootUrl"].EnsureEndsWith('/');
-
-                /* abpMvc_BlazorServerTiered client is only needed if you created a tiered blazor server
-                 * solution. Otherwise, you can delete this client. */
-
-                await CreateClientAsync(
-                    name: blazorServerTieredClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { "hybrid" },
-                    secret: (configurationSection["abpMvc_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{blazorServerTieredClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{blazorServerTieredClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{blazorServerTieredClientRootUrl}Account/FrontChannelLogout",
-                    corsOrigins: new[] { blazorServerTieredClientRootUrl.RemovePostFix("/") }
-                );
-            }
             
 
             // Swagger Client
-            var swaggerClientId = configurationSection["abpMvc_Swagger:ClientId"];
+            var swaggerClientId = configurationSection["AbpMvc_Swagger:ClientId"];
             if (!swaggerClientId.IsNullOrWhiteSpace())
             {
-                var swaggerRootUrl = configurationSection["abpMvc_Swagger:RootUrl"].TrimEnd('/');
+                var swaggerRootUrl = configurationSection["AbpMvc_Swagger:RootUrl"].TrimEnd('/');
 
                 await CreateClientAsync(
                     name: swaggerClientId,
                     scopes: commonScopes,
                     grantTypes: new[] { "authorization_code" },
-                    secret: (configurationSection["abpMvc_Swagger:ClientSecret"] ?? "1q2w3e*").Sha256(),
+                    secret: (configurationSection["AbpMvc_Swagger:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     requireClientSecret: false,
                     redirectUri: $"{swaggerRootUrl}/swagger/oauth2-redirect.html",
                     corsOrigins: new[] { swaggerRootUrl.RemovePostFix("/") }

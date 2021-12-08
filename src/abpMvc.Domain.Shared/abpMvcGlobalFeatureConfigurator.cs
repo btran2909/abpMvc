@@ -1,9 +1,9 @@
 ﻿using Volo.Abp.GlobalFeatures;
 using Volo.Abp.Threading;
 
-namespace abpMvc
+namespace AbpMvc
 {
-    public static class abpMvcGlobalFeatureConfigurator
+    public static class AbpMvcGlobalFeatureConfigurator
     {
         private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 

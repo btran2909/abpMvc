@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace abpMvc.Web.Pages
+namespace AbpMvc.Web.Pages
 {
-    public class IndexModel : abpMvcPageModel
+    public class IndexModel : AbpMvcPageModel
     {
 
     }

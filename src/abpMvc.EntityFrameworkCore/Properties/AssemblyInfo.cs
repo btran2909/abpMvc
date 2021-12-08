@@ -1,2 +1,2 @@
 ﻿using System.Runtime.CompilerServices;
-[assembly:InternalsVisibleToAttribute("abpMvc.EntityFrameworkCore.Tests")]
+[assembly:InternalsVisibleToAttribute("AbpMvc.EntityFrameworkCore.Tests")]

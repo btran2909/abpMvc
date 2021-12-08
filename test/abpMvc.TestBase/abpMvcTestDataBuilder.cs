@@ -3,13 +3,13 @@ using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.MultiTenancy;
 
-namespace abpMvc
+namespace AbpMvc
 {
-    public class abpMvcTestDataSeedContributor : IDataSeedContributor, ITransientDependency
+    public class AbpMvcTestDataSeedContributor : IDataSeedContributor, ITransientDependency
     {
         private readonly ICurrentTenant _currentTenant;
 
-        public abpMvcTestDataSeedContributor(ICurrentTenant currentTenant)
+        public AbpMvcTestDataSeedContributor(ICurrentTenant currentTenant)
         {
             _currentTenant = currentTenant;
         }

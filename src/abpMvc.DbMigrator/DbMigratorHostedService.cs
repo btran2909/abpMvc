@@ -1,42 +1,45 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using abpMvc.Data;
+using AbpMvc.Data;
 using Serilog;
 using Volo.Abp;
 
-namespace abpMvc.DbMigrator
+namespace AbpMvc.DbMigrator
 {
     public class DbMigratorHostedService : IHostedService
     {
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
+        private readonly IConfiguration _configuration;
 
-        public DbMigratorHostedService(IHostApplicationLifetime hostApplicationLifetime)
+        public DbMigratorHostedService(IHostApplicationLifetime hostApplicationLifetime, IConfiguration configuration)
         {
             _hostApplicationLifetime = hostApplicationLifetime;
+            _configuration = configuration;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            using (var application = AbpApplicationFactory.Create<abpMvcDbMigratorModule>(options =>
-                {
-                    options.UseAutofac();
-                    options.Services.AddLogging(c => c.AddSerilog());
-                }))
-                {
-                    application.Initialize();
+            using (var application = AbpApplicationFactory.Create<AbpMvcDbMigratorModule>(options =>
+            {
+                options.Services.ReplaceConfiguration(_configuration);
+                options.UseAutofac();
+                options.Services.AddLogging(c => c.AddSerilog());
+            }))
+            {
+                application.Initialize();
 
-                    await application
-                        .ServiceProvider
-                        .GetRequiredService<abpMvcDbMigrationService>()
-                        .MigrateAsync();
+                await application
+                    .ServiceProvider
+                    .GetRequiredService<AbpMvcDbMigrationService>()
+                    .MigrateAsync();
 
-                    application.Shutdown();
+                application.Shutdown();
 
-                    _hostApplicationLifetime.StopApplication();
-                }
-
+                _hostApplicationLifetime.StopApplication();
+            }
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

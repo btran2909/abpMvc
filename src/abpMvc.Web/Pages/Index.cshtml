@@ -1,17 +1,17 @@
 ﻿@page
-@model abpMvc.Web.Pages.IndexModel
-@using abpMvc.Web.Menus
+@model AbpMvc.Web.Pages.IndexModel
+@using AbpMvc.Web.Menus
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @using Microsoft.AspNetCore.Mvc.Localization
-@using abpMvc.Localization
+@using AbpMvc.Localization
 @using Volo.Abp.Users
 @inject IPageLayout PageLayout
-@inject IHtmlLocalizer<abpMvcResource> L
+@inject IHtmlLocalizer<AbpMvcResource> L
 @inject ICurrentUser CurrentUser
 @{
     ViewBag.PageTitle = L["Home"];
     PageLayout.Content.Title = L["Home"].Value;
-    PageLayout.Content.MenuItemName = abpMvcMenus.Home;
+    PageLayout.Content.MenuItemName = AbpMvcMenus.Home;
 }
 
 <abp-card>

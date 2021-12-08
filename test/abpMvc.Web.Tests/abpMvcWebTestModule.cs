@@ -3,27 +3,33 @@ using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using abpMvc.Web;
-using abpMvc.Web.Menus;
+using AbpMvc.Web;
+using AbpMvc.Web.Menus;
 using Volo.Abp.AspNetCore.TestBase;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
         typeof(AbpAspNetCoreTestBaseModule),
-        typeof(abpMvcWebModule),
-        typeof(abpMvcApplicationTestModule)
+        typeof(AbpMvcWebModule),
+        typeof(AbpMvcApplicationTestModule)
     )]
-    public class abpMvcWebTestModule : AbpModule
+    public class AbpMvcWebTestModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", false);
+            builder.AddJsonFile("appsettings.secrets.json", true);
+            context.Services.ReplaceConfiguration(builder.Build());
+
             context.Services.PreConfigure<IMvcBuilder>(builder =>
             {
-                builder.PartManager.ApplicationParts.Add(new AssemblyPart(typeof(abpMvcWebModule).Assembly));
+                builder.PartManager.ApplicationParts.Add(new AssemblyPart(typeof(AbpMvcWebModule).Assembly));
             });
         }
 
@@ -48,7 +54,7 @@ namespace abpMvc
         {
             services.Configure<AbpNavigationOptions>(options =>
             {
-                options.MenuContributors.Add(new abpMvcMenuContributor());
+                options.MenuContributors.Add(new AbpMvcMenuContributor());
             });
         }
     }

@@ -1,12 +1,12 @@
 ﻿using Volo.Abp.Modularity;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcApplicationModule),
-        typeof(abpMvcDomainTestModule)
+        typeof(AbpMvcApplicationModule),
+        typeof(AbpMvcDomainTestModule)
         )]
-    public class abpMvcApplicationTestModule : AbpModule
+    public class AbpMvcApplicationTestModule : AbpModule
     {
 
     }

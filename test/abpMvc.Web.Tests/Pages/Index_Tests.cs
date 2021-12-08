@@ -2,9 +2,9 @@
 using Shouldly;
 using Xunit;
 
-namespace abpMvc.Pages
+namespace AbpMvc.Pages
 {
-    public class Index_Tests : abpMvcWebTestBase
+    public class Index_Tests : AbpMvcWebTestBase
     {
         [Fact]
         public async Task Welcome_Page()

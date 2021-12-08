@@ -1,8 +1,8 @@
 ﻿using Volo.Abp;
 
-namespace abpMvc.EntityFrameworkCore
+namespace AbpMvc.EntityFrameworkCore
 {
-    public abstract class abpMvcEntityFrameworkCoreTestBase : abpMvcTestBase<abpMvcEntityFrameworkCoreTestModule> 
+    public abstract class AbpMvcEntityFrameworkCoreTestBase : AbpMvcTestBase<AbpMvcEntityFrameworkCoreTestModule> 
     {
 
     }

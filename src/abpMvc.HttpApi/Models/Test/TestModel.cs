@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace abpMvc.Models.Test
+namespace AbpMvc.Models.Test
 {
     public class TestModel
     {

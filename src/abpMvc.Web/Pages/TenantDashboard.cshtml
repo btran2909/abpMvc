@@ -2,15 +2,15 @@
 @using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Mvc.Rendering
-@using abpMvc.Localization
-@using abpMvc.Web.Menus
+@using AbpMvc.Localization
+@using AbpMvc.Web.Menus
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets
 @using Volo.Abp.AuditLogging.Web.Pages.Shared.Components.AverageExecutionDurationPerDayWidget
 @using Volo.Abp.AuditLogging.Web.Pages.Shared.Components.ErrorRateWidget
-@inject IHtmlLocalizer<abpMvcResource> L
+@inject IHtmlLocalizer<AbpMvcResource> L
 @inject IWidgetManager WidgetManager
-@model abpMvc.Web.Pages.TenantDashboardModel
+@model AbpMvc.Web.Pages.TenantDashboardModel
 @{
     ViewBag.PageTitle = "Dashboard";
 }
@@ -18,7 +18,7 @@
 @{
     PageLayout.Content.Title = L["Dashboard"].Value;
     PageLayout.Content.BreadCrumb.Add(L["Menu:Dashboard"].Value);
-    PageLayout.Content.MenuItemName = abpMvcMenus.TenantDashboard;
+    PageLayout.Content.MenuItemName = AbpMvcMenus.TenantDashboard;
 }
 
 @section scripts {

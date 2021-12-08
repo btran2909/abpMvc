@@ -11,10 +11,10 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TextTemplateManagement;
 using Volo.Saas.Host;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcDomainSharedModule),
+        typeof(AbpMvcDomainSharedModule),
         typeof(AbpFeatureManagementApplicationContractsModule),
         typeof(AbpIdentityApplicationContractsModule),
         typeof(AbpPermissionManagementApplicationContractsModule),
@@ -28,8 +28,11 @@ namespace abpMvc
         typeof(LeptonThemeManagementApplicationContractsModule),
         typeof(TextTemplateManagementApplicationContractsModule)
     )]
-    public class abpMvcApplicationContractsModule : AbpModule
+    public class AbpMvcApplicationContractsModule : AbpModule
     {
-
+        public override void PreConfigureServices(ServiceConfigurationContext context)
+        {
+            AbpMvcDtoExtensions.Configure();
+        }
     }
 }

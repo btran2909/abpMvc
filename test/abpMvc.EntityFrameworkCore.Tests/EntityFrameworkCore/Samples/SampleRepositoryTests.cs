@@ -1,26 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using abpMvc.Users;
-using Shouldly;
-using System;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
+using Shouldly;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Identity;
 using Xunit;
 
-namespace abpMvc.EntityFrameworkCore.Samples
+namespace AbpMvc.EntityFrameworkCore.Samples
 {
     /* This is just an example test class.
      * Normally, you don't test ABP framework code
-     * (like default AppUser repository IRepository<AppUser, Guid> here).
      * Only test your custom repository methods.
      */
-    public class SampleRepositoryTests : abpMvcEntityFrameworkCoreTestBase
+    public class SampleRepositoryTests : AbpMvcEntityFrameworkCoreTestBase
     {
-        private readonly IRepository<AppUser, Guid> _appUserRepository;
+        private readonly IRepository<IdentityUser, Guid> _appUserRepository;
 
         public SampleRepositoryTests()
         {
-            _appUserRepository = GetRequiredService<IRepository<AppUser, Guid>>();
+            _appUserRepository = GetRequiredService<IRepository<IdentityUser, Guid>>();
         }
 
         [Fact]

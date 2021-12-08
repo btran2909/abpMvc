@@ -8,14 +8,14 @@ using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Modularity;
 
-namespace abpMvc.EntityFrameworkCore
+namespace AbpMvc.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(abpMvcEntityFrameworkCoreDbMigrationsModule),
-        typeof(abpMvcTestBaseModule),
+        typeof(AbpMvcEntityFrameworkCoreModule),
+        typeof(AbpMvcTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
-    public class abpMvcEntityFrameworkCoreTestModule : AbpModule
+    public class AbpMvcEntityFrameworkCoreTestModule : AbpModule
     {
         private SqliteConnection _sqliteConnection;
 
@@ -47,11 +47,11 @@ namespace abpMvc.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<abpMvcMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<AbpMvcDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new abpMvcMigrationsDbContext(options))
+            using (var context = new AbpMvcDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }

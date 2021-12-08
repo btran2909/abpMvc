@@ -13,29 +13,29 @@ using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 using Volo.Saas.Tenants;
 
-namespace abpMvc.Data
+namespace AbpMvc.Data
 {
-    public class abpMvcDbMigrationService : ITransientDependency
+    public class AbpMvcDbMigrationService : ITransientDependency
     {
-        public ILogger<abpMvcDbMigrationService> Logger { get; set; }
+        public ILogger<AbpMvcDbMigrationService> Logger { get; set; }
 
         private readonly IDataSeeder _dataSeeder;
-        private readonly IEnumerable<IabpMvcDbSchemaMigrator> _dbSchemaMigrators;
+        private readonly IEnumerable<IAbpMvcDbSchemaMigrator> _dbSchemaMigrators;
         private readonly ITenantRepository _tenantRepository;
         private readonly ICurrentTenant _currentTenant;
 
-        public abpMvcDbMigrationService(
+        public AbpMvcDbMigrationService(
             IDataSeeder dataSeeder,
             ITenantRepository tenantRepository,
             ICurrentTenant currentTenant,
-            IEnumerable<IabpMvcDbSchemaMigrator> dbSchemaMigrators)
+            IEnumerable<IAbpMvcDbSchemaMigrator> dbSchemaMigrators)
         {
             _dataSeeder = dataSeeder;
             _tenantRepository = tenantRepository;
             _currentTenant = currentTenant;
             _dbSchemaMigrators = dbSchemaMigrators;
 
-            Logger = NullLogger<abpMvcDbMigrationService>.Instance;
+            Logger = NullLogger<AbpMvcDbMigrationService>.Instance;
         }
 
         public async Task MigrateAsync()
@@ -102,9 +102,9 @@ namespace abpMvc.Data
 
             await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
                 .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName,
-                    abpMvcConsts.AdminEmailDefaultValue)
+                    AbpMvcConsts.AdminEmailDefaultValue)
                 .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName,
-                    abpMvcConsts.AdminPasswordDefaultValue)
+                    AbpMvcConsts.AdminPasswordDefaultValue)
             );
         }
 
@@ -143,14 +143,14 @@ namespace abpMvc.Data
 
         private bool DbMigrationsProjectExists()
         {
-            var dbMigrationsProjectFolder = GetDbMigrationsProjectFolderPath();
+            var dbMigrationsProjectFolder = GetEntityFrameworkCoreProjectFolderPath();
 
             return dbMigrationsProjectFolder != null;
         }
 
         private bool MigrationsFolderExists()
         {
-            var dbMigrationsProjectFolder = GetDbMigrationsProjectFolderPath();
+            var dbMigrationsProjectFolder = GetEntityFrameworkCoreProjectFolderPath();
 
             return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "Migrations"));
         }
@@ -174,7 +174,7 @@ namespace abpMvc.Data
             }
 
             var procStartInfo = new ProcessStartInfo(fileName,
-                $"{argumentPrefix} \"abp create-migration-and-run-migrator \"{GetDbMigrationsProjectFolderPath()}\"\""
+                $"{argumentPrefix} \"abp create-migration-and-run-migrator \"{GetEntityFrameworkCoreProjectFolderPath()}\"\""
             );
 
             try
@@ -187,7 +187,7 @@ namespace abpMvc.Data
             }
         }
 
-        private string GetDbMigrationsProjectFolderPath()
+        private string GetEntityFrameworkCoreProjectFolderPath()
         {
             var slnDirectoryPath = GetSolutionDirectoryPath();
 
@@ -199,7 +199,7 @@ namespace abpMvc.Data
             var srcDirectoryPath = Path.Combine(slnDirectoryPath, "src");
 
             return Directory.GetDirectories(srcDirectoryPath)
-                .FirstOrDefault(d => d.EndsWith(".DbMigrations"));
+                .FirstOrDefault(d => d.EndsWith(".EntityFrameworkCore"));
         }
 
         private string GetSolutionDirectoryPath()

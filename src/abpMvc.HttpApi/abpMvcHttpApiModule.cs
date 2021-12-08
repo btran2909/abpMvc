@@ -1,5 +1,5 @@
 ﻿using Localization.Resources.AbpUi;
-using abpMvc.Localization;
+using AbpMvc.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.FeatureManagement;
@@ -14,10 +14,10 @@ using Volo.Abp.Localization;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TextTemplateManagement;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcApplicationContractsModule),
+        typeof(AbpMvcApplicationContractsModule),
         typeof(AbpIdentityHttpApiModule),
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpFeatureManagementHttpApiModule),
@@ -31,7 +31,7 @@ namespace abpMvc
         typeof(LeptonThemeManagementHttpApiModule),
         typeof(TextTemplateManagementHttpApiModule)
         )]
-    public class abpMvcHttpApiModule : AbpModule
+    public class AbpMvcHttpApiModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
@@ -43,7 +43,7 @@ namespace abpMvc
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Get<abpMvcResource>()
+                    .Get<AbpMvcResource>()
                     .AddBaseTypes(
                         typeof(AbpUiResource)
                     );

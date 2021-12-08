@@ -1,8 +1,8 @@
 ﻿using Volo.Abp.Identity;
 
-namespace abpMvc
+namespace AbpMvc
 {
-    public static class abpMvcConsts
+    public static class AbpMvcConsts
     {
         public const string DbTablePrefix = "App";
         public const string DbSchema = null;

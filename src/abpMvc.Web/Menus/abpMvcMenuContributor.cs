@@ -1,19 +1,19 @@
 using System.Threading.Tasks;
-using abpMvc.Localization;
-using abpMvc.Permissions;
+using AbpMvc.Localization;
+using AbpMvc.Permissions;
 using Volo.Abp.AuditLogging.Web.Navigation;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.IdentityServer.Web.Navigation;
 using Volo.Abp.LanguageManagement.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TextTemplateManagement.Web.Navigation;
+using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.UI.Navigation;
-//using Volo.CmsKit.Pro.Admin.Web.Menus;
 using Volo.Saas.Host.Navigation;
 
-namespace abpMvc.Web.Menus
+namespace AbpMvc.Web.Menus
 {
-    public class abpMvcMenuContributor : IMenuContributor
+    public class AbpMvcMenuContributor : IMenuContributor
     {
         public async Task ConfigureMenuAsync(MenuConfigurationContext context)
         {
@@ -25,12 +25,12 @@ namespace abpMvc.Web.Menus
 
         private static Task ConfigureMainMenuAsync(MenuConfigurationContext context)
         {
-            var l = context.GetLocalizer<abpMvcResource>();
+            var l = context.GetLocalizer<AbpMvcResource>();
 
             //Home
             context.Menu.AddItem(
                 new ApplicationMenuItem(
-                    abpMvcMenus.Home,
+                    AbpMvcMenus.Home,
                     l["Menu:Home"],
                     "~/",
                     icon: "fa fa-home",
@@ -41,30 +41,26 @@ namespace abpMvc.Web.Menus
             //HostDashboard
             context.Menu.AddItem(
                 new ApplicationMenuItem(
-                    abpMvcMenus.HostDashboard,
+                    AbpMvcMenus.HostDashboard,
                     l["Menu:Dashboard"],
                     "~/HostDashboard",
                     icon: "fa fa-line-chart",
-                    order: 2,
-                    requiredPermissionName: abpMvcPermissions.Dashboard.Host
-                )
+                    order: 2
+                ).RequirePermissions(AbpMvcPermissions.Dashboard.Host)
             );
 
             //TenantDashboard
             context.Menu.AddItem(
                 new ApplicationMenuItem(
-                    abpMvcMenus.TenantDashboard,
+                    AbpMvcMenus.TenantDashboard,
                     l["Menu:Dashboard"],
                     "~/Dashboard",
                     icon: "fa fa-line-chart",
-                    order: 2,
-                    requiredPermissionName: abpMvcPermissions.Dashboard.Tenant
-                )
+                    order: 2
+                ).RequirePermissions(AbpMvcPermissions.Dashboard.Tenant)
             );
 
             context.Menu.SetSubItemOrder(SaasHostMenuNames.GroupName, 3);
-            //CMS
-            //context.Menu.SetSubItemOrder(CmsKitProAdminMenus.GroupName, 4);
 
             //Administration
             var administration = context.Menu.GetAdministration();

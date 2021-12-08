@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using abpMvc.Web.Components.Toolbar.LoginLink;
+using AbpMvc.Web.Components.Toolbar.LoginLink;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.Users;
 
-namespace abpMvc.Web.Menus
+namespace AbpMvc.Web.Menus
 {
-    public class abpMvcToolbarContributor : IToolbarContributor
+    public class AbpMvcToolbarContributor : IToolbarContributor
     {
         public virtual Task ConfigureToolbarAsync(IToolbarConfigurationContext context)
         {

@@ -11,11 +11,16 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="appsettings.secrets.json" />
+    <Content Include="appsettings.secrets.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.3.0" />
-    <ProjectReference Include="..\..\src\abpMvc.HttpApi.Client\abpMvc.HttpApi.Client.csproj" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.4.4" />
+    <ProjectReference Include="..\..\src\AbpMvc.HttpApi.Client\AbpMvc.HttpApi.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>

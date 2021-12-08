@@ -6,9 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Shouldly;
 using Volo.Abp.AspNetCore.TestBase;
 
-namespace abpMvc
+namespace AbpMvc
 {
-    public abstract class abpMvcWebTestBase : AbpAspNetCoreIntegratedTestBase<abpMvcWebTestStartup>
+    public abstract class AbpMvcWebTestBase : AbpAspNetCoreIntegratedTestBase<AbpMvcWebTestStartup>
     {
         protected override IHostBuilder CreateHostBuilder()
         {

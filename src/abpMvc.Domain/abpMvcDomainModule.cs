@@ -1,10 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using abpMvc.Localization;
-using abpMvc.MultiTenancy;
+using AbpMvc.Localization;
+using AbpMvc.MultiTenancy;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
-using Volo.Abp.Commercial.SuiteTemplates;
 using Volo.Abp.Emailing;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -21,10 +20,10 @@ using Volo.Abp.TextTemplateManagement;
 using Volo.Saas;
 using Volo.Abp.BlobStoring.Database;
 
-namespace abpMvc
+namespace AbpMvc
 {
     [DependsOn(
-        typeof(abpMvcDomainSharedModule),
+        typeof(AbpMvcDomainSharedModule),
         typeof(AbpAuditLoggingDomainModule),
         typeof(AbpBackgroundJobsDomainModule),
         typeof(AbpFeatureManagementDomainModule),
@@ -37,11 +36,10 @@ namespace abpMvc
         typeof(TextTemplateManagementDomainModule),
         typeof(LeptonThemeManagementDomainModule),
         typeof(LanguageManagementDomainModule),
-        typeof(VoloAbpCommercialSuiteTemplatesModule),
         typeof(AbpEmailingModule),
         typeof(BlobStoringDatabaseDomainModule)
         )]
-    public class abpMvcDomainModule : AbpModule
+    public class AbpMvcDomainModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
@@ -52,7 +50,13 @@ namespace abpMvc
 
             Configure<AbpLocalizationOptions>(options =>
             {
+                options.Languages.Add(new LanguageInfo("ar", "ar", "العربية", "ae"));
                 options.Languages.Add(new LanguageInfo("en", "en", "English", "gb"));
+                options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish", "fi"));
+                options.Languages.Add(new LanguageInfo("fr", "fr", "Français", "fr"));
+                options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
+                options.Languages.Add(new LanguageInfo("it", "it", "Italian", "it"));
+                options.Languages.Add(new LanguageInfo("sk", "sk", "Slovak", "sk"));
                 options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe", "tr"));
                 options.Languages.Add(new LanguageInfo("sl", "sl", "Slovenščina", "si"));
                 options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文", "cn"));

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Identity;
 
-namespace abpMvc.HttpApi.Client.ConsoleTestApp
+namespace AbpMvc.HttpApi.Client.ConsoleTestApp
 {
     public class ClientDemoService : ITransientDependency
     {

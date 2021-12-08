@@ -1,2 +1,2 @@
 ﻿using System.Runtime.CompilerServices;
-[assembly:InternalsVisibleToAttribute("abpMvc.Web.Tests")]
+[assembly:InternalsVisibleToAttribute("AbpMvc.Web.Tests")]

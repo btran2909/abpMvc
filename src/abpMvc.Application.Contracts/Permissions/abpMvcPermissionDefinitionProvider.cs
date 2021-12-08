@@ -1,26 +1,26 @@
-using abpMvc.Localization;
+using AbpMvc.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 using Volo.Abp.MultiTenancy;
 
-namespace abpMvc.Permissions
+namespace AbpMvc.Permissions
 {
-    public class abpMvcPermissionDefinitionProvider : PermissionDefinitionProvider
+    public class AbpMvcPermissionDefinitionProvider : PermissionDefinitionProvider
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var myGroup = context.AddGroup(abpMvcPermissions.GroupName);
+            var myGroup = context.AddGroup(AbpMvcPermissions.GroupName);
 
-            myGroup.AddPermission(abpMvcPermissions.Dashboard.Host, L("Permission:Dashboard"), MultiTenancySides.Host);
-            myGroup.AddPermission(abpMvcPermissions.Dashboard.Tenant, L("Permission:Dashboard"), MultiTenancySides.Tenant);
+            myGroup.AddPermission(AbpMvcPermissions.Dashboard.Host, L("Permission:Dashboard"), MultiTenancySides.Host);
+            myGroup.AddPermission(AbpMvcPermissions.Dashboard.Tenant, L("Permission:Dashboard"), MultiTenancySides.Tenant);
 
             //Define your own permissions here. Example:
-            //myGroup.AddPermission(abpMvcPermissions.MyPermission1, L("Permission:MyPermission1"));
+            //myGroup.AddPermission(AbpMvcPermissions.MyPermission1, L("Permission:MyPermission1"));
         }
 
         private static LocalizableString L(string name)
         {
-            return LocalizableString.Create<abpMvcResource>(name);
+            return LocalizableString.Create<AbpMvcResource>(name);
         }
     }
 }

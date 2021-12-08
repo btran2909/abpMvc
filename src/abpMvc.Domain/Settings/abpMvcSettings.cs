@@ -1,8 +1,8 @@
-﻿namespace abpMvc.Settings
+﻿namespace AbpMvc.Settings
 {
-    public static class abpMvcSettings
+    public static class AbpMvcSettings
     {
-        private const string Prefix = "abpMvc";
+        private const string Prefix = "AbpMvc";
 
         //Add your own setting names here. Example:
         //public const string MySetting1 = Prefix + ".MySetting1";
