@@ -3,6 +3,24 @@ $(function () {
 	
 	var bookService = window.abpMvc.books.books;
 	
+        var lastNpIdId = '';
+        var lastNpDisplayNameId = '';
+
+        var _lookupModal = new abp.ModalManager({
+            viewUrl: abp.appPath + "Shared/LookupModal",
+            scriptUrl: "/Pages/Shared/lookupModal.js",
+            modalClass: "navigationPropertyLookup"
+        });
+
+        $('.lookupCleanButton').on('click', '', function () {
+            $(this).parent().parent().find('input').val('');
+        });
+
+        _lookupModal.onClose(function () {
+            var modal = $(_lookupModal.getModal());
+            $('#' + lastNpIdId).val(modal.find('#CurrentLookupId').val());
+            $('#' + lastNpDisplayNameId).val(modal.find('#CurrentLookupDisplayName').val());
+        });
 	
     var createModal = new abp.ModalManager({
         viewUrl: abp.appPath + "Books/CreateModal",
@@ -25,7 +43,8 @@ $(function () {
 			publishDateMin: $("#PublishDateFilterMin").data().datepicker.getFormattedDate('yyyy-mm-dd'),
 			publishDateMax: $("#PublishDateFilterMax").data().datepicker.getFormattedDate('yyyy-mm-dd'),
 			priceMin: $("#PriceFilterMin").val(),
-			priceMax: $("#PriceFilterMax").val()
+			priceMax: $("#PriceFilterMax").val(),
+			authorId: $("#AuthorIdFilter").val()
         };
     };
 
@@ -49,7 +68,7 @@ $(function () {
                                 visible: abp.auth.isGranted('AbpMvc.Books.Edit'),
                                 action: function (data) {
                                     editModal.open({
-                                     id: data.record.id
+                                     id: data.record.book.id
                                      });
                                 }
                             },
@@ -60,7 +79,7 @@ $(function () {
                                     return l("DeleteConfirmationMessage");
                                 },
                                 action: function (data) {
-                                    bookService.delete(data.record.id)
+                                    bookService.delete(data.record.book.id)
                                         .then(function () {
                                             abp.notify.info(l("SuccessfullyDeleted"));
                                             dataTable.ajax.reload();
@@ -70,10 +89,10 @@ $(function () {
                         ]
                 }
             },
-			{ data: "name" },
-			{ data: "type" },
+			{ data: "book.name" },
+			{ data: "book.type" },
             {
-                data: "publishDate",
+                data: "book.publishDate",
                 render: function (publishDate) {
                     if (!publishDate) {
                         return "";
@@ -83,7 +102,11 @@ $(function () {
                     return (new Date(date)).toLocaleDateString(abp.localization.currentCulture.name);
                 }
             },
-			{ data: "price" }
+			{ data: "book.price" },
+            {
+                data: "author.name",
+                defaultContent : ""
+            }
         ]
     }));
 

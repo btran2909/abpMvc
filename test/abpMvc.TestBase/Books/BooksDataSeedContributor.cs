@@ -19,20 +19,20 @@ namespace AbpMvc.Books
         {
             await _bookRepository.InsertAsync(new Book
             (
-                id: Guid.Parse("ea136109-c547-48b0-bcb7-bfd7f5364fbf"),
-                name: "22931850a90e4c02a0e08e15db325a392ca5",
+                id: Guid.Parse("78d7f7de-3b06-45f1-b174-a06293ea771f"),
+                name: "d381898264f748e79c6805bc2f256ef287b3",
                 type: 1,
-                publishDate: new DateTime(2017, 11, 25),
-                price: 144359571
+                publishDate: new DateTime(2008, 4, 10),
+                price: 1164505867
             ));
 
             await _bookRepository.InsertAsync(new Book
             (
-                id: Guid.Parse("ef678172-c459-40c5-9e91-5195c115caa9"),
-                name: "c00bba317d744913b719cf9f5f0b78b6983b",
-                type: 1,
-                publishDate: new DateTime(2007, 10, 27),
-                price: 1198679933
+                id: Guid.Parse("f5d88395-abd1-4072-9254-04fadf54ce51"),
+                name: "e8310c2c05af43a9b6b017e9a708a6444cdb",
+                type: 0,
+                publishDate: new DateTime(2016, 6, 7),
+                price: 103302306
             ));
         }
     }

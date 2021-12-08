@@ -4,15 +4,17 @@ using AbpMvc.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace AbpMvc.Migrations
 {
     [DbContext(typeof(AbpMvcDbContext))]
-    partial class AbpMvcDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211208094158_Updated_Book_21120816414670")]
+    partial class Updated_Book_21120816414670
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

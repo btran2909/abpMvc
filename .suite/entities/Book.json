@@ -83,6 +83,22 @@
       "EnumValues": null
     }
   ],
-  "NavigationProperties": [],
+  "NavigationProperties": [
+    {
+      "Namespace": "AbpMvc.Authors",
+      "EntityName": "Author",
+      "EntityNameWithDuplicationNumber": "Author",
+      "EntitySetNameWithDuplicationNumber": "Authors",
+      "EntitySetName": "Authors",
+      "DtoNamespace": "AbpMvc.Authors",
+      "DtoEntityName": "AuthorDto",
+      "Type": "Guid",
+      "Name": "AuthorId",
+      "ReferencePropertyName": "Author",
+      "DisplayProperty": "Name",
+      "UiPickType": "Dropdown",
+      "IsRequired": false
+    }
+  ],
   "PhysicalFileName": "Book.json"
 }

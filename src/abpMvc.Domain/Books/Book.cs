@@ -1,3 +1,4 @@
+using AbpMvc.Authors;
 using System;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Entities.Auditing;
@@ -17,6 +18,7 @@ namespace AbpMvc.Books
         public virtual DateTime? PublishDate { get; set; }
 
         public virtual float Price { get; set; }
+        public Guid? AuthorId { get; set; }
 
         public Book()
         {

@@ -58,6 +58,7 @@
     "ShortBio": "Short Bio",
     "MinBirthDate": "Min Birth Date",
     "MaxBirthDate": "Max Birth Date",
-    "Menu:Authors": "Authors"
+    "Menu:Authors": "Authors",
+    "Author": "Author"
   }
 }

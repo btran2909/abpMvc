@@ -1,3 +1,4 @@
+using AbpMvc.Books;
 using AbpMvc.Authors;
 using AbpMvc.Books;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,6 +51,8 @@ namespace AbpMvc.EntityFrameworkCore
                 options.AddRepository<Book, Books.EfCoreBookRepository>();
 
                 options.AddRepository<Author, Authors.EfCoreAuthorRepository>();
+
+                options.AddRepository<Book, Books.EfCoreBookRepository>();
 
             });
 

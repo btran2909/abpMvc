@@ -25,13 +25,13 @@ namespace AbpMvc.Books
             {
                 // Act
                 var result = await _bookRepository.GetListAsync(
-                    name: "22931850a90e4c02a0e08e15db325a392ca5"
+                    name: "d381898264f748e79c6805bc2f256ef287b3"
                 );
 
                 // Assert
                 result.Count.ShouldBe(1);
                 result.FirstOrDefault().ShouldNotBe(null);
-                result.First().Id.ShouldBe(Guid.Parse("ea136109-c547-48b0-bcb7-bfd7f5364fbf"));
+                result.First().Id.ShouldBe(Guid.Parse("78d7f7de-3b06-45f1-b174-a06293ea771f"));
             });
         }
 
@@ -43,7 +43,7 @@ namespace AbpMvc.Books
             {
                 // Act
                 var result = await _bookRepository.GetCountAsync(
-                    name: "c00bba317d744913b719cf9f5f0b78b6983b"
+                    name: "e8310c2c05af43a9b6b017e9a708a6444cdb"
                 );
 
                 // Assert

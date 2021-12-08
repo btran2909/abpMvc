@@ -67,6 +67,9 @@
             <abp-column size="_3">
                 <abp-input asp-for="PriceFilterMax" label="@L["MaxPrice"].Value" />
             </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="AuthorIdFilter" label="@L["Author"].Value" />
+            </abp-column>
         </abp-row>
 
         <abp-table striped-rows="true" id="BooksTable">
@@ -77,7 +80,7 @@
 					<th>@L["Type"]</th>
 					<th>@L["PublishDate"]</th>
 					<th>@L["Price"]</th>
-
+					<th>@L["Author"]</th>
 				</tr>
             </thead>
         </abp-table>

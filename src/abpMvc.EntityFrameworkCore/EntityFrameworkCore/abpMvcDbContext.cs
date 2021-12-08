@@ -98,15 +98,6 @@ namespace AbpMvc.EntityFrameworkCore
             //});
             if (builder.IsHostDatabase())
             {
-                builder.Entity<Book>(b =>
-    {
-        b.ToTable(AbpMvcConsts.DbTablePrefix + "Books", AbpMvcConsts.DbSchema);
-        b.ConfigureByConvention();
-        b.Property(x => x.Name).HasColumnName(nameof(Book.Name)).HasMaxLength(BookConsts.NameMaxLength);
-        b.Property(x => x.Type).HasColumnName(nameof(Book.Type)).HasMaxLength(BookConsts.TypeMaxLength);
-        b.Property(x => x.PublishDate).HasColumnName(nameof(Book.PublishDate));
-        b.Property(x => x.Price).HasColumnName(nameof(Book.Price));
-    });
 
             }
             if (builder.IsHostDatabase())
@@ -118,6 +109,20 @@ namespace AbpMvc.EntityFrameworkCore
         b.Property(x => x.Name).HasColumnName(nameof(Author.Name)).HasMaxLength(AuthorConsts.NameMaxLength);
         b.Property(x => x.BirthDate).HasColumnName(nameof(Author.BirthDate));
         b.Property(x => x.ShortBio).HasColumnName(nameof(Author.ShortBio));
+    });
+
+            }
+            if (builder.IsHostDatabase())
+            {
+                builder.Entity<Book>(b =>
+    {
+        b.ToTable(AbpMvcConsts.DbTablePrefix + "Books", AbpMvcConsts.DbSchema);
+        b.ConfigureByConvention();
+        b.Property(x => x.Name).HasColumnName(nameof(Book.Name)).HasMaxLength(BookConsts.NameMaxLength);
+        b.Property(x => x.Type).HasColumnName(nameof(Book.Type)).HasMaxLength(BookConsts.TypeMaxLength);
+        b.Property(x => x.PublishDate).HasColumnName(nameof(Book.PublishDate));
+        b.Property(x => x.Price).HasColumnName(nameof(Book.Price));
+        b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId);
     });
 
             }

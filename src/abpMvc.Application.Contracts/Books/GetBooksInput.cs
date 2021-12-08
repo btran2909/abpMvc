@@ -14,6 +14,7 @@ namespace AbpMvc.Books
         public DateTime? PublishDateMax { get; set; }
         public float? PriceMin { get; set; }
         public float? PriceMax { get; set; }
+        public Guid? AuthorId { get; set; }
 
         public GetBooksInput()
         {

@@ -24,6 +24,12 @@ namespace AbpMvc.Web.Pages.Books
         public float? PriceFilterMin { get; set; }
 
         public float? PriceFilterMax { get; set; }
+        [SelectItems(nameof(AuthorLookupList))]
+        public Guid? AuthorIdFilter { get; set; }
+        public List<SelectListItem> AuthorLookupList { get; set; } = new List<SelectListItem>
+        {
+            new SelectListItem(string.Empty, "")
+        };
 
         private readonly IBooksAppService _booksAppService;
 
@@ -34,6 +40,12 @@ namespace AbpMvc.Web.Pages.Books
 
         public async Task OnGetAsync()
         {
+            AuthorLookupList.AddRange((
+                    await _booksAppService.GetAuthorLookupAsync(new LookupRequestDto
+                    {
+                        MaxResultCount = LimitedResultRequestDto.MaxMaxResultCount
+                    })).Items.Select(t => new SelectListItem(t.DisplayName, t.Id.ToString())).ToList()
+            );
 
             await Task.CompletedTask;
         }

@@ -1,3 +1,4 @@
+using AbpMvc.Shared;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,11 @@ namespace AbpMvc.Web.Pages.Books
         [BindProperty]
         public BookCreateDto Book { get; set; }
 
+        public List<SelectListItem> AuthorLookupList { get; set; } = new List<SelectListItem>
+        {
+            new SelectListItem(" — ", "")
+        };
+
         private readonly IBooksAppService _booksAppService;
 
         public CreateModalModel(IBooksAppService booksAppService)
@@ -24,6 +30,13 @@ namespace AbpMvc.Web.Pages.Books
         public async Task OnGetAsync()
         {
             Book = new BookCreateDto();
+            AuthorLookupList.AddRange((
+                                    await _booksAppService.GetAuthorLookupAsync(new LookupRequestDto
+                                    {
+                                        MaxResultCount = LimitedResultRequestDto.MaxMaxResultCount
+                                    })).Items.Select(t => new SelectListItem(t.DisplayName, t.Id.ToString())).ToList()
+                        );
+
             await Task.CompletedTask;
         }
 

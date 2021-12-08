@@ -22,6 +22,9 @@ namespace AbpMvc
             CreateMap<AuthorCreateDto, Author>().IgnoreFullAuditedObjectProperties().Ignore(x => x.ExtraProperties).Ignore(x => x.ConcurrencyStamp).Ignore(x => x.Id);
             CreateMap<AuthorUpdateDto, Author>().IgnoreFullAuditedObjectProperties().Ignore(x => x.ExtraProperties).Ignore(x => x.ConcurrencyStamp).Ignore(x => x.Id);
             CreateMap<Author, AuthorDto>();
+
+            CreateMap<BookWithNavigationProperties, BookWithNavigationPropertiesDto>();
+            CreateMap<Author, LookupDto<Guid?>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Name));
         }
     }
 }

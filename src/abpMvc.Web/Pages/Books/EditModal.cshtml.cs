@@ -1,3 +1,4 @@
+using AbpMvc.Shared;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace AbpMvc.Web.Pages.Books
         [BindProperty]
         public BookUpdateDto Book { get; set; }
 
+        public List<SelectListItem> AuthorLookupList { get; set; } = new List<SelectListItem>
+        {
+            new SelectListItem(" — ", "")
+        };
+
         private readonly IBooksAppService _booksAppService;
 
         public EditModalModel(IBooksAppService booksAppService)
@@ -27,8 +33,15 @@ namespace AbpMvc.Web.Pages.Books
 
         public async Task OnGetAsync()
         {
-            var book = await _booksAppService.GetAsync(Id);
-            Book = ObjectMapper.Map<BookDto, BookUpdateDto>(book);
+            var bookWithNavigationPropertiesDto = await _booksAppService.GetWithNavigationPropertiesAsync(Id);
+            Book = ObjectMapper.Map<BookDto, BookUpdateDto>(bookWithNavigationPropertiesDto.Book);
+
+            AuthorLookupList.AddRange((
+                                    await _booksAppService.GetAuthorLookupAsync(new LookupRequestDto
+                                    {
+                                        MaxResultCount = LimitedResultRequestDto.MaxMaxResultCount
+                                    })).Items.Select(t => new SelectListItem(t.DisplayName, t.Id.ToString())).ToList()
+                        );
 
         }
 

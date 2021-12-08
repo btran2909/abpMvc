@@ -1,3 +1,4 @@
+using AbpMvc.Shared;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -7,9 +8,13 @@ namespace AbpMvc.Books
 {
     public interface IBooksAppService : IApplicationService
     {
-        Task<PagedResultDto<BookDto>> GetListAsync(GetBooksInput input);
+        Task<PagedResultDto<BookWithNavigationPropertiesDto>> GetListAsync(GetBooksInput input);
+
+        Task<BookWithNavigationPropertiesDto> GetWithNavigationPropertiesAsync(Guid id);
 
         Task<BookDto> GetAsync(Guid id);
+
+        Task<PagedResultDto<LookupDto<Guid?>>> GetAuthorLookupAsync(LookupRequestDto input);
 
         Task DeleteAsync(Guid id);
 
