@@ -18,6 +18,7 @@ using Volo.Saas;
 using Volo.Abp.BlobStoring.Database;
 using Volo.Abp.Commercial.SuiteTemplates;
 using Volo.Abp.GlobalFeatures;
+using Volo.FileManagement;
 
 namespace AbpMvc
 {
@@ -37,6 +38,7 @@ namespace AbpMvc
         typeof(AbpGlobalFeaturesModule),
         typeof(BlobStoringDatabaseDomainSharedModule)
         )]
+    [DependsOn(typeof(FileManagementDomainSharedModule))]
     public class AbpMvcDomainSharedModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

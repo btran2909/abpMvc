@@ -16,6 +16,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TextTemplateManagement.EntityFrameworkCore;
 using Volo.Saas.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
+using Volo.FileManagement.EntityFrameworkCore;
 
 namespace AbpMvc.EntityFrameworkCore
 {
@@ -34,6 +35,7 @@ namespace AbpMvc.EntityFrameworkCore
         typeof(TextTemplateManagementEntityFrameworkCoreModule),
         typeof(BlobStoringDatabaseEntityFrameworkCoreModule)
         )]
+    [DependsOn(typeof(FileManagementEntityFrameworkCoreModule))]
     public class AbpMvcEntityFrameworkCoreModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

@@ -20,6 +20,7 @@ using Volo.Saas.EntityFrameworkCore;
 using Volo.Saas.Editions;
 using Volo.Saas.Tenants;
 using Volo.Payment.EntityFrameworkCore;
+using Volo.FileManagement.EntityFrameworkCore;
 
 namespace AbpMvc.EntityFrameworkCore
 {
@@ -126,6 +127,7 @@ namespace AbpMvc.EntityFrameworkCore
     });
 
             }
+            builder.ConfigureFileManagement();
         }
     }
 }

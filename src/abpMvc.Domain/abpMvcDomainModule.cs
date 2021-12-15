@@ -19,6 +19,7 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TextTemplateManagement;
 using Volo.Saas;
 using Volo.Abp.BlobStoring.Database;
+using Volo.FileManagement;
 
 namespace AbpMvc
 {
@@ -39,6 +40,7 @@ namespace AbpMvc
         typeof(AbpEmailingModule),
         typeof(BlobStoringDatabaseDomainModule)
         )]
+    [DependsOn(typeof(FileManagementDomainModule))]
     public class AbpMvcDomainModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

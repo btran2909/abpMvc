@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
@@ -14,6 +14,7 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TextTemplateManagement;
 using Volo.Saas.Host;
+using Volo.FileManagement;
 
 namespace AbpMvc
 {
@@ -33,6 +34,7 @@ namespace AbpMvc
         typeof(LeptonThemeManagementApplicationModule),
         typeof(TextTemplateManagementApplicationModule)
         )]
+    [DependsOn(typeof(FileManagementApplicationModule))]
     public class AbpMvcApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
