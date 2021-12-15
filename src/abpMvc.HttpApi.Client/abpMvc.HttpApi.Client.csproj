@@ -15,6 +15,7 @@
     <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" Version="4.4.4" />
     <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" Version="4.4.4" />
     <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" Version="4.4.4" />
+    <ProjectReference Include="..\..\modules\Volo.FileManagement\src\Volo.FileManagement.HttpApi.Client\Volo.FileManagement.HttpApi.Client.csproj" />
     <PackageReference Include="Volo.Saas.Host.HttpApi.Client" Version="4.4.4" />
     <PackageReference Include="Volo.Abp.AuditLogging.HttpApi.Client" Version="4.4.4" />
     <PackageReference Include="Volo.Abp.Identity.Pro.HttpApi.Client" Version="4.4.4" />

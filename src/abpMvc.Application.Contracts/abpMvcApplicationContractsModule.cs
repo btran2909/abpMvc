@@ -1,4 +1,4 @@
-﻿using Volo.Abp.Account;
+using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -10,6 +10,7 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TextTemplateManagement;
 using Volo.Saas.Host;
+using Volo.FileManagement;
 
 namespace AbpMvc
 {
@@ -28,6 +29,7 @@ namespace AbpMvc
         typeof(LeptonThemeManagementApplicationContractsModule),
         typeof(TextTemplateManagementApplicationContractsModule)
     )]
+    [DependsOn(typeof(FileManagementApplicationContractsModule))]
     public class AbpMvcApplicationContractsModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

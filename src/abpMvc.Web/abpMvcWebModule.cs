@@ -48,6 +48,7 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Lepton.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Swashbuckle;
+using Volo.FileManagement.Web;
 
 namespace AbpMvc.Web
 {
@@ -69,6 +70,7 @@ namespace AbpMvc.Web
         typeof(AbpSwashbuckleModule),
         typeof(AbpAspNetCoreSerilogModule)
         )]
+    [DependsOn(typeof(FileManagementWebModule))]
     public class AbpMvcWebModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

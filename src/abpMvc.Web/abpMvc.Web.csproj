@@ -40,6 +40,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="5.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="5.0.*" />
+    <ProjectReference Include="..\..\modules\Volo.FileManagement\src\Volo.FileManagement.Web\Volo.FileManagement.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
